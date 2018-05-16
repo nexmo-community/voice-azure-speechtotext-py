@@ -1,0 +1,14 @@
+[{
+       "action": "connect",
+       "eventUrl": ["http://$hostname/event"],
+       "endpoint": [
+           {
+              "type": "websocket",
+              "uri" : "ws://$hostname/socket",
+              "content-type": "audio/l16;rate=16000", 
+              "headers": {
+              }
+           }
+       ]
+     }
+]
