@@ -30,4 +30,4 @@ Link a number to your application and then when you call the number you will be 
 
 
 ## Extending 
-This example code simply prints the reponses from Azure to the console, however to integrate it with your own applicaiton you should extend the `on_Azure_message` [function in server.py](https://github.com/nexmo-community/voice-microsoft-speechtotext/blob/master/server.py#L119)
+This example code simply prints the reponses from Azure to the console, however to integrate it with your own applicaiton you should extend the `on_return_message` function in [server.py](https://github.com/nexmo-community/voice-microsoft-speechtotext/blob/master/server.py#L119)
