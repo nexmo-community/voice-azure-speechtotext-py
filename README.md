@@ -1,10 +1,13 @@
 # Example code for connecting a Nexmo Voice API call to Azure Speech via websockets
 
-You can use this code as a base for doing real time transcription on a phone call using Azure Speech to Text API.
+You can use this code as a base for doing real time transcription on a phone call using [Azure Speech to Text API](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/).
 
 The Audio stream is sent over a websocket to your server and you then relay that on to the Azure websocket interface.
 
-## Running the example
+## Azure Speech to Text API
+You'll need to signup for the Azure Speech to Text API, start here https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/
+
+### Prerequisites
 
 To run this on your machine you'll need an up-to-date version of Python 3. Install dependencies with:
 
@@ -16,6 +19,7 @@ You'll need to edit the `server.py` file to add in your own service credentials 
 
 By default the server runs on port 8000
 
+## Running the example
 
 Run the server like this:
 ```bash
