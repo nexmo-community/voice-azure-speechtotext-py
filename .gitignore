@@ -3,4 +3,6 @@
 .AppleDouble
 .LSOverride
 
+.env
+
 ms_creds.py*

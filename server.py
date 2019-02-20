@@ -10,11 +10,10 @@ from string import Template
 from uuid import uuid4
 import datetime
 
-HOSTNAME = "<your-hostname>"  # Change to the hostname of your server
-LANGUAGE = "en-GB"  # Change if not working with the English language
-KEY1 = "45f345r4t35t24g"  # Your Azure Speech API Service Key
-PORT = 8000  # Default port, this can be changed
-REGIONAL_API_ENDPOINT = "westeurope"  # eg. westeurope, useast, southeastasia
+HOSTNAME = os.environ.get("HOSTNAME")
+LANGUAGE = os.environ.get("LANGUAGE")
+KEY1 = os.environ.get("KEY1")
+REGIONAL_API_ENDPOINT = os.environ.get("REGIONAL_API_ENDPOINT")
 
 
 def get_token():
@@ -141,8 +140,8 @@ def main():
                                             {'path': static_path}),
                                            ])
     http_server = tornado.httpserver.HTTPServer(application)
-    port = int(os.environ.get("PORT", PORT))
-    print(f"Server running on port {PORT}")
+    port = int(os.environ.get("PORT", 8000))
+    print(f"Server running on port {port}")
     http_server.listen(port)
     tornado.ioloop.IOLoop.instance().start()
 
