@@ -10,15 +10,16 @@ from string import Template
 from uuid import uuid4
 import datetime
 
-
-HOSTNAME = 'example.ngrok.io'  # Change to the hostname of your server
-LANGUAGE = "en-GB"
-KEY1 = "1234567890abcdef"
-PORT = 8000
+HOSTNAME = "<your-hostname>"  # Change to the hostname of your server
+LANGUAGE = "en-GB"  # Change if not working with the English language
+KEY1 = "45f345r4t35t24g"  # Your Azure Speech API Service Key
+PORT = 8000  # Default port, this can be changed
+REGIONAL_API_ENDPOINT = "westeurope"  # eg. westeurope, useast, southeastasia
 
 
 def get_token():
-    url = 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
+    url = "https://" + REGIONAL_API_ENDPOINT + \
+        ".api.cognitive.microsoft.com/sts/v1.0/issueToken"
     headers = {'Ocp-Apim-Subscription-Key': KEY1}
     resp = requests.post(url, headers=headers)
     token = None
@@ -68,7 +69,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         token = get_token()
         print("Websocket Call Connected")
-        req = tornado.httpclient.HTTPRequest("wss://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?format=simple&language=" +
+        req = tornado.httpclient.HTTPRequest("wss://" + REGIONAL_API_ENDPOINT + ".stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?format=simple&language=" +
                                              LANGUAGE, headers={'X-ConnectionId': str(uuid4().hex), 'Authorization': token})
         self.azure_future = tornado.websocket.websocket_connect(
             req, on_message_callback=self.on_return_message)
