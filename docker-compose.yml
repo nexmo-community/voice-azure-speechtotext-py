@@ -3,6 +3,11 @@ services:
   web:
     container_name: azure-nexmo-speech-to-text
     restart: always
+    environment:
+      - HOSTNAME=
+      - LANGUAGE=en-GB
+      - KEY1=
+      - REGIONAL_API_ENDPOINT=westeurope
     build: .
     ports:
       - '8000:8000'
