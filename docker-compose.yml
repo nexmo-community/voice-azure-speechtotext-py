@@ -7,7 +7,7 @@ services:
       - HOSTNAME=
       - LANGUAGE=en-GB
       - KEY1=
-      - REGIONAL_API_ENDPOINT=westeurope
+      - REGIONAL_API_ENDPOINT=
     build: .
     ports:
       - '8000:8000'
