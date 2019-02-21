@@ -9,11 +9,13 @@ import os
 from string import Template
 from uuid import uuid4
 import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
-HOSTNAME = os.environ.get("HOSTNAME")
-LANGUAGE = os.environ.get("LANGUAGE")
-KEY1 = os.environ.get("KEY1")
-REGIONAL_API_ENDPOINT = os.environ.get("REGIONAL_API_ENDPOINT")
+HOSTNAME = os.getenv("HOSTNAME")
+LANGUAGE = os.getenv("LANGUAGE")
+KEY1 = os.getenv("KEY1")
+REGIONAL_API_ENDPOINT = os.getenv("REGIONAL_API_ENDPOINT")
 
 
 def get_token():
