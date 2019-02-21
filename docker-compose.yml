@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web:
+    container_name: azure-nexmo-speech-to-text
+    restart: always
+    build: .
+    ports:
+      - '8000:8000'
