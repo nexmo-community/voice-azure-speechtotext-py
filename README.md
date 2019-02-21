@@ -40,7 +40,7 @@ Then copy the `.env.example` file to a new file called `.env`:
 cp .env.example > .env
 ```
 
-Then edit the `.env` file to add in your own service credentials from Azure and other settings specific to your instance of the Azure Speech Service API.
+Edit the `.env` file to add in your own service credentials from Azure and other settings specific to your instance of the Azure Speech Service API.
 
 ```python
 HOSTNAME = "yourhostname.ngrok.io"
