@@ -2,7 +2,5 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-
 .env
-
 ms_creds.py*
