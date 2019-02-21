@@ -1,5 +1,7 @@
 # Example code for connecting a Nexmo Voice API call to Azure Speech via websockets
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 You can use this code as a base for doing real time transcription on a phone call using [Azure Speech to Text API](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/).
 
 The Audio stream is sent over a websocket to your server and you then relay that on to the Azure websocket interface.
