@@ -1,37 +1,104 @@
-# Example code for connecting a Nexmo Voice API call to Azure Speech via websockets
+# Speech To Text with Nexmo Voice API & Microsoft Azure
 
-You can use this code as a base for doing real time transcription on a phone call using [Azure Speech to Text API](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/).
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://nexmo.dev/azure-nexmo-speechtotext-install)
+
+You can use this code as a base for doing real time transcription of a phone call using [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/).
 
 The Audio stream is sent over a websocket to your server and you then relay that on to the Azure websocket interface.
 
-## Azure Speech to Text API
-You'll need to signup for the Azure Speech to Text API, start here https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/
+## Azure Speech Services
 
-### Prerequisites
+You'll need to signup for [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/) and make a note of two pieces of information - the first service API key, and the regional location of the Speech API service you deployed (eg. westeurope).
 
-To run this on your machine you'll need an up-to-date version of Python 3. Install dependencies with:
+## Running the app
+
+### Using Docker
+
+To run the app using Docker run the following command in your terminal:
+
+```bash
+docker-compose up
+```
+
+This will create a new image with all the dependencies and run it at `http://localhost:8000`.
+
+You can declare the required environment variables by editing the `docker-compose.yml` file.
+
+### Local Install
+
+To run this on your machine you'll need an [up-to-date version of Python 3](https://www.python.org/downloads/).
+
+Start by installing the dependencies with:
 
 ```bash
 pip install --upgrade -r requirements.txt
 ```
 
-You'll need to edit the `server.py` file to add in your own service credentials from azure and also specify the hostname where your machine is running, tools like ngrok are great for exposing your local machine to the internet. You may also want to change the language from en-GB.
+Then copy the `.env.example` file to a new file called `.env`:
 
-By default the server runs on port 8000
+```bash
+cp .env.example > .env
+```
+
+Edit the `.env` file to add in your own service credentials from Azure and other settings specific to your instance of the Azure Speech Service API.
+
+```python
+HOSTNAME = "yourhostname.ngrok.io"
+LANGUAGE = "en-GB"
+KEY1 = "3234gh3gh34ghj32hj"
+REGIONAL_API_ENDPOINT = "westeurope" # eg. "westeurope", "southeastasia", "uswest"
+```
+
+By default the server runs on port 8000.
+
+Tools like [ngrok](https://ngrok.com/) are great for exposing ports on your local machine to the internet. If you haven't done this before, [check out this guide](https://www.nexmo.com/blog/2017/07/04/local-development-nexmo-ngrok-tunnel-dr/).
+
+If you aren't going to be working in the `en-GB` language then you can change the language to any of the other supported languages listed in the [Speech Service API documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support).
+
+The Azure Speech Service API can run across multiple regions. When you initially set it up you will specify which region your service will run in, you will then need to change the `REGIONAL_API_ENDPOINT` environment variable to match.
 
 ## Running the example
 
-Run the server like this:
-```bash
-python ./server.py 
+Run the server using this command:
 
+```bash
+python ./server.py
 ```
 
-## Linking to Nexmo 
-You will need to create a new application with the Nexmo CLI and set the answer_url as http://[YOUR HOSTNAME]/ncco and the event_url as  http://[YOUR HOSTNAME]/event
-The server will return an appropriate NCCO.
-Link a number to your application and then when you call the number you will be connected throgh to Azure, simply start talking and you should see results printed to the console.
+## Linking the app to Nexmo
 
+You will need to create a new Nexmo application in order to work with this app:
 
-## Extending 
-This example code simply prints the reponses from Azure to the console, however to integrate it with your own applicaiton you should extend the `on_return_message` function in [server.py](https://github.com/nexmo-community/voice-microsoft-speechtotext/blob/master/server.py#L119)
+### Create a Nexmo Application Using the Command Line Interface
+
+Install the CLI by following [these instructions](https://github.com/Nexmo/nexmo-cli#installation). Then create a new Nexmo application that also sets up your `answer_url` and `event_url` for the app running locally on your machine.
+
+```bash
+nexmo app:create ms-speech-to-text http://<your_hostname>/ncco http://<your_hostname>/event
+```
+
+This will return an application ID. Make a note of it.
+
+### Rent a New Virtual Number
+
+If you don't have a number already in place, you will need to rent one. This can also be achieved using the CLI by running this command:
+
+```bash
+nexmo number:buy
+```
+
+### Link the Virtual Number to the Application
+
+Finally, link your new number to the application you created by running:
+
+```bash
+nexmo link:app YOUR_NUMBER YOUR_APPLICATION_ID
+```
+
+## Try it out
+
+With your app running, call the number you assigned to it and start speaking. After a brief pause you will see whatever you say written out to the console, in real time.
+
+## Extending
+
+This example code simply prints the reponses from Azure to the console, however to integrate it with your own application you should extend the `on_return_message` function in [server.py](https://github.com/nexmo-community/voice-microsoft-speechtotext/blob/master/server.py#L117)
