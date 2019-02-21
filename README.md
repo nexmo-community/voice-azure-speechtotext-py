@@ -59,7 +59,7 @@ The Azure Speech Service API can run across multiple regions. When you initially
 
 ## Running the example
 
-Run the server using this command:
+If you are working with a local install you can run the server using this command:
 
 ```bash
 python ./server.py
