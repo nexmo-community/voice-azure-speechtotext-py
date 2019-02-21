@@ -1,18 +1,18 @@
-# Microsoft Azure Speech To Text with Nexmo Voice API
+# Speech To Text with Nexmo Voice API & Microsoft Azure
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://nexmo.dev/azure-nexmo-speechtotext-install)
 
-You can use this code as a base for doing real time transcription of a phone call using [Azure Speech API](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/).
+You can use this code as a base for doing real time transcription of a phone call using [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/).
 
 The Audio stream is sent over a websocket to your server and you then relay that on to the Azure websocket interface.
 
-## Azure Speech API
+## Azure Speech Services
 
-You'll need to signup for the [Azure Speech API](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/) and make a note of two pieces of information - the first service API key, and the regional location of the Speech API service you deployed (eg. westeurope).
+You'll need to signup for [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/) and make a note of two pieces of information - the first service API key, and the regional location of the Speech API service you deployed (eg. westeurope).
 
 ## Running the app
 
-### Running with Docker
+### Using Docker
 
 To run the app using Docker run the following command in your terminal:
 
@@ -101,4 +101,4 @@ With your app running, call the number you assigned to it and start speaking. Af
 
 ## Extending
 
-This example code simply prints the reponses from Azure to the console, however to integrate it with your own application you should extend the `on_return_message` function in [server.py](https://github.com/nexmo-community/voice-microsoft-speechtotext/blob/master/server.py#L115)
+This example code simply prints the reponses from Azure to the console, however to integrate it with your own application you should extend the `on_return_message` function in [server.py](https://github.com/nexmo-community/voice-microsoft-speechtotext/blob/master/server.py#L117)
