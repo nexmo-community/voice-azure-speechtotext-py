@@ -1,10 +1,10 @@
 # Speech To Text with Nexmo Voice API & Microsoft Azure
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://nexmo.dev/azure-nexmo-speechtotext-install)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://nexmo.dev/azure-nexmo-speechtotext-install) [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://nexmo.dev/azure-nexmo-speechtotext-glitchremix) [![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net)
 
 You can use this code as a base for doing real time transcription of a phone call using [Azure Speech Services](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/).
 
-The Audio stream is sent over a websocket to your server and you then relay that on to the Azure websocket interface.
+An audio stream is sent over a websocket to your server and you then relay that on to the Azure websocket interface where recognition is performed and the phrases returned to the console.
 
 ## Azure Speech Services
 
@@ -59,7 +59,7 @@ The Azure Speech Service API can run across multiple regions. When you initially
 
 ## Running the example
 
-Run the server using this command:
+If you are working with a local install you can run the server using this command:
 
 ```bash
 python ./server.py

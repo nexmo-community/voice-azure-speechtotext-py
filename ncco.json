@@ -1,5 +1,10 @@
 [
   {
+    "action": "talk",
+    "voiceName": "Amy",
+    "text": "You are testing the text-to-speech app using Nexmo's Voice API and Microsoft Azure's Speech Service. Please start talking and watch your console for the output."
+  },
+  {
     "action": "connect",
     "eventUrl": ["http://$hostname/event"],
     "endpoint": [
